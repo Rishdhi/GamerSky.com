@@ -1,0 +1,2617 @@
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+
+/* Custom Properties */
+
+:root{
+    --light-color: #B5FFE9;
+    --light-color-alt:#fff;
+    --primary-background-color:#000000;
+    --secondary-background-color: #181818;
+    --hover-light-color: var(--light-color);
+    --hover-dark-color: var(--primary-background-color);
+    --gradient-color: linear-gradient(
+        115deg, #74d16b, #b9bd44, #e8a449, #377424,
+         #ff7d9b, #f289c7, #d49bea, #abaeff, 
+         #7cc6ff, #47dbff, #32edff, #5ffbf1
+    );
+    --transparent-light-color: rgba(0, 225, 255, 0.911);
+    --transparent-dark-color: rgba(1, 1, 5, 0.75);
+    --font-family: 'Poppins',sans-serif;
+    --font-size-xsm: 1.2rem;
+    --font-size-sm: 1.6rem;
+    --font-size-md: 2.4rem;
+    --font-size-lg: 3rem;
+    --font-size-xl: 4rem;
+    --gap:2rem;
+    --margin-sm: 2rem;
+    --margin-md: 3rem;
+    --item-min-height-sm: 20rem;
+    --item-min-height-md: 30rem;
+    --item-min-height-lg: 35rem;
+}
+
+
+
+
+
+/* Base Styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+html{
+    font-size: 62.5%;
+}
+
+
+
+
+
+
+
+
+body{
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--light-color-alt);
+    background-color: var(--primary-background-color);
+    letter-spacing: 1px;
+    transition: background-color .25s, color .25s; /* Toggle theme animation */
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+    
+}
+
+ul{
+    list-style: none;
+    
+}
+
+
+input,button{
+    font:inherit;
+    color: inherit;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+i{
+    font-size: var(--font-size-md);
+}
+
+/* Theme color change */
+body.light-theme{
+    /* Copy and paste these variables from root */
+    /* Then change these values */
+    /* --light-color:#f1c0e8; */
+    --light-color:#3d3d3d;
+    --light-color-alt: rgba(0,0,0,.6);
+    /* --light-color-alt: rgb(11, 47, 253); */
+    --primary-background-color: #fff;
+    --secondary-background-color: #f1f1f1;
+    --hover-light-color: #fff;
+    --transparent-dark-color: #f1f1f1;
+    --transparent-light-color: rgba(0,0,0,.1);
+    transition: all 0.5s 0s ease-in-out;
+
+}
+
+/* Reusable classes */
+.container{
+    max-width: 160rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.place-items-center{
+    /* For toggle, search and close/menu button */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.screen-sm-hidden{
+    /* For sign in buttons */
+    /* Since its mobile first buttons will be hidden */
+    display: none;
+}
+
+.d-grid{
+    display: grid;
+}
+
+.section{
+    padding-block: 5rem;
+}
+
+ .header{
+    background-color: var(--secondary-background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.navbar{
+    display: flex;
+    /* Places them horizontally */
+    align-items: center;
+    justify-content: space-between;
+    /* seperates or keeps space between logo, list and icons buttons */
+    padding-block:1.5rem;
+    /* Padding bottom */
+}
+
+.logo 
+{
+    /* GamerSky */
+    font-size: var(--font-size-md);
+    color: var(--light-color-alt);
+    border-radius: 11px 40px 0px 40px;
+    border: 2px solid #b9bd44;
+    padding: .8rem;
+    box-sizing: border-box;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-variant: small-caps;
+    background:crimson;
+    display: inline-block;
+}
+
+
+
+
+
+
+.logo {
+    background: linear-gradient(300deg,deepskyblue,darkviolet,blue,#20fe3c,#e4fe20);
+    background-size: 300% 300%;
+    animation: gradient-animation 10s ease infinite;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menu{
+    /* All of the links/list */
+    /* Position absolute takes this away from the flow of elements */
+    /* The other elements acts like this element does not exist */
+    /* It relates to the body if no other elements have position relative */
+    /* Position absolute needs position relative to fall back on */
+    /* If other/parent elements do not have position relative 
+    this element falls back to default which is body*/
+    position: absolute;
+    top: 8.5rem;
+    right: 1.5rem;
+    width: 23rem;
+    padding: 1.5rem;
+    background-color: var(--secondary-background-color);
+    opacity: 0;
+    /* To hide the navbar */
+    transform: scale(0);
+    /* Animation when menu button is clicked */
+    transition: all 0.5s 0s ease;
+}
+
+.list{
+    display: flex;
+    /* To align items (the list horizontally) */
+    align-items: center;
+    gap: var(--gap);
+}
+
+.menu > .list{
+    flex-direction: column;
+    /* without flex direction the list will appear horizontally
+    one after the other */
+
+    /* To prevent this flex-direction: column; is used or this makes
+    the list appear vertically */
+}
+
+.list li{
+  position: relative;
+  
+  color: #fff;
+
+  text-shadow: 0 0 15px #8e54e9;
+  transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  padding: 4.2px;
+
+
+}
+
+
+
+
+
+
+.list li:after,
+.list li:before {
+  content: "";
+  position: absolute;
+  display: block;
+  border: 0px solid transparent;
+  width: 0%;
+  height: 0%;
+  transition: all 0.3s ease;
+
+}
+
+.list li:after {
+  width: 0%;
+  height: 0%;
+  top: 0;
+  left: 0;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+}
+
+.list li:before {
+  width: 0%;
+  height: 0%;
+  right: 0;
+  bottom: 0;
+  border-bottom: 2px solid transparent;
+  border-right: 2px solid transparent;
+}
+
+.list li:hover::before,
+.list li:hover::after {
+  width: 10px;
+  height: 10px;
+  border-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+.list-link.current{
+    /* The current link (Action Games) will be a different color 
+    and for that the light color will be selected
+    notice that the Home text color is different from other links*/
+    color: var(--light-color);
+}
+
+.close-menu-icon{
+    display: none;
+    /* to not display close icon */
+}
+
+.btn{
+    /* For the buttons (toggle, search and close button) */
+    cursor: pointer;
+}
+
+.list-link:hover,
+.btn:hover,
+.btn:hover span
+{
+    /* When links, buttons and sign up span are hovered */
+    color: var(--light-color);
+}
+
+.moon-icon{
+    display: none;
+}
+
+.light-theme .sun-icon{
+    display: none;
+}
+
+.light-theme .moon-icon{
+    display: block;
+    /* to show moon icon */
+}
+
+/* Header Javascript styles */
+.header.activated{
+    box-shadow: 0 1px 25rem --transparent-dark-color;
+}
+
+.menu.activated{
+
+    box-shadow: #FFF 0 -1px 4px, 
+    #ff0 0 -2px 10px, 
+    #ff8000 0 -10px 20px, 
+    red 0 -18px 40px, 
+    5px 1px 15px 5px rgba(0,0,0,0);
+
+    box-shadow: #FFF 0 -1px 4px, 
+    #ff0 0 -2px 10px, 
+    #ff8000 0 -10px 20px, 
+    red 0 -18px 40px, 
+    5px 1px 15px 5px rgba(0,0,0,0);
+
+    box-shadow: #FFF 0 -1px 4px, 
+    #ff0 0 -2px 10px, 
+    #ff8000 0 -10px 20px, 
+    red 0 -18px 40px, 
+    5px 1px 15px 5px rgba(0,0,0,0);
+
+    opacity: 1;
+    transform: scale(1);
+}
+
+.menu-toggle-icon.activated .open-menu-icon{
+    display: none;
+}
+
+.menu-toggle-icon.activated .close-menu-icon{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Search */
+
+.search-form-container{
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    background-color: var(--primary-background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s 0s ease-in-out;
+}
+
+.form-container-inner{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    text-align: center;
+    
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+}
+
+.form-input,
+.form-btn{
+    display: inline-block;
+    border: 2px solid #32edff;
+    padding: 1.5rem;
+}
+
+.form-input{
+    border-right: none;
+    width: 100%;
+}
+
+.form-btn{
+    /* Search button/icon */
+    margin-left: -.5rem;
+
+    background-color: var(--secondary-background-color);
+    width: 8rem;
+}
+
+.form-note{
+    /* or press ESC.... */
+    font-size: var(--font-size-xsm);
+    align-self: flex-start;
+    /* align self overrides main container aligning */
+    border: 2px solid #e8a449;
+    padding: 1.5rem;
+    animation: neonAnim 2s alternate-reverse infinite;
+    color: #ff002b;
+    box-shadow: 0px 0px 40px 0px rgba(255,171,46,0.94);
+    font-weight: bold;
+
+}
+
+.form-note:hover{
+    background-color:orange;
+    transition: all 0.5s 0s ease-in-out;
+}
+
+.form-close-btn{
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    border: 2px solid #ff002b;
+    width: 4rem;
+    height: 4rem;
+}
+
+/* When search icon is clicked form should be shown */
+
+.search-form-container.activated{
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Featured articles */
+
+.featured-articles{
+    padding-block: 2rem;
+}
+
+
+
+.featured-articles-container,
+.featured-content{
+    gap: var(--gap);
+}
+
+.headline-banner{
+    /* Heading and description's entire container */
+    background-color: var(--secondary-background-color);
+    display: flex;
+    /* display: flex; Hot topic and description appear side by side rather than vertically */
+    align-items: center;
+    gap: var(--gap);
+    font-size: var(--font-size-xsm);
+}
+
+.headline{
+    /* Hot Topic container <h3> */
+    color: var(--light-color);
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding: .4rem;
+    height: 100%;
+}
+
+.top{
+    color:var(--light-color);
+    text-align: center;
+    height: 100%;
+}
+
+.section-header-offset 
+{
+    margin-top: 7.4rem;
+    /* This is going to bring Top games heading down */
+    /* and sniper elite heading from post.html */
+}
+
+                    /* Top Games animation start */
+
+
+.tracking-in-contract-bck-bottom {
+	-webkit-animation: tracking-in-contract-bck-bottom 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-contract-bck-bottom 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+ @-webkit-keyframes tracking-in-contract-bck-bottom {
+    0% {
+      letter-spacing: 1em;
+      -webkit-transform: translateZ(400px) translateY(300px);
+              transform: translateZ(400px) translateY(300px);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      -webkit-transform: translateZ(0) translateY(0);
+              transform: translateZ(0) translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes tracking-in-contract-bck-bottom {
+    0% {
+      letter-spacing: 1em;
+      -webkit-transform: translateZ(400px) translateY(300px);
+              transform: translateZ(400px) translateY(300px);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      -webkit-transform: translateZ(0) translateY(0);
+              transform: translateZ(0) translateY(0);
+      opacity: 1;
+    }
+  }
+
+
+  .text-pop-up-top {
+	-webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
+
+                            /* Top Games animation end */
+
+
+
+
+.headline span{
+    height: inherit;
+}
+
+.fancy-border{
+    position: relative;
+    overflow: hidden;
+}
+
+.fancy-border::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: var(--gradient-color);
+    background-size: 50% 100%;
+    z-index: 5;
+}
+
+.fancy-border span{
+    position: relative;
+    z-index: 10;
+    /* Z index to show Hot Topic on top */
+    display: inline-flex;
+    padding: .6rem 1.5rem;
+    background-color: var(--secondary-background-color);
+    /* This seperates span hot topic from gradient border */
+    /* The hot topic span increases in size  */
+    /* which causes the border to shrink in size */
+}
+
+.article{
+    position: relative;
+    min-height: var(--item-min-height-md);
+    /* Entire image
+    container */
+}
+
+.article-image{
+    position: absolute;
+    /* pos: abs makes the article description
+    disappear */
+    width: 100%;
+    height: 100%;
+    /* all images width and height 
+    are now same */
+    object-fit: cover;
+    transition: all 0.5s 0s ease-in-out;
+    
+}
+
+.article-category{
+
+    /* Heading inside the image
+    Genres (Action...) */
+    position: absolute;
+    top: 2.5rem;
+    right: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--light-color);
+    text-transform: uppercase;
+    z-index: 10;
+    -webkit-border-radius: 33px;
+    border-radius: 33px;
+    background: #5888f8;
+
+}
+
+
+
+
+.article-data-container{
+    /* Gameplay time and hours */
+    position: absolute;
+    bottom: 0;
+    right: 0 ;
+    padding: 2rem 1.5rem;
+    background-color: rgba(89, 138, 138, 0.7);
+    z-index: 10;
+    width: 100%;
+    transition: all 0.2s 0s ease-in-out;
+}
+
+.article:hover
+.article-data-container{
+    /* hover effect for entire
+    image cards */
+    background-color: #1d2b24;
+    color: var(--hover-light-color);
+}
+
+.article:hover .article-data-spacer{
+    /* When image card is hovered the diamond shape color changes */
+    background-color: var(--hover-light-color);
+}
+
+.article:hover .article-title{
+    color: var(--light-color)
+    /* Game name changes color when hovered */
+}
+
+.article-data{
+    /* Gameplay time and hours */
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    font-size: var(--font-size-xsm);
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+.article-data-spacer{
+    background-color: var(--light-color-alt);
+    width: .5rem;
+    height: .5rem;
+    transform: rotate(45deg);
+}
+
+.title{
+    /* Sniper Elite 4, Blur (all the main headings)*/
+    color: var(--light-color);
+}
+
+.article-title{
+    font-size: var(--font-size-md);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Trending games */
+
+.sidebar 
+{
+    background-color: var(--secondary-background-color);
+    padding: 2.5rem;
+}
+
+.trending-news-box{
+    /* entire image card */
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    padding-block: 2rem;
+    border: 2px solid --transparent-light-color;
+    /* border: 2px solid --transparent-light-color; */
+}
+
+.trending-news-box:last-of-type{
+    border-bottom: none;
+}
+
+.trending-news-image-box{
+    position: relative;
+    width: 100%;
+    height: var(--item-min-height-sm);
+}
+
+.main-trending-news-heading{
+    font-size: var(--font-size-md);
+    text-align: center;
+    padding: 1rem;
+}
+
+            /* TRENDING GAMES FLICKER EFFECT START */
+
+.text-flicker-in-glow:hover {
+	-webkit-animation: text-flicker-in-glow 4s linear both;
+	        animation: text-flicker-in-glow 4s linear both;
+}
+
+ @-webkit-keyframes text-flicker-in-glow {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    10.1% {
+      opacity: 1;
+      text-shadow: none;
+    }
+    10.2% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    20% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    20.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+    }
+    20.6% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    30% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    30.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    30.5% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    30.6% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    45% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    45.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    50% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    55% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    55.1% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    57% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    57.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35);
+    }
+    60% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35);
+    }
+    60.1% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    65% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    65.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    75% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    75.1% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    77% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    77.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 110px rgba(255, 255, 255, 0.2), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    85% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 110px rgba(255, 255, 255, 0.2), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    85.1% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    86% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    86.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    100% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+  }
+  @keyframes text-flicker-in-glow {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    10.1% {
+      opacity: 1;
+      text-shadow: none;
+    }
+    10.2% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    20% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    20.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+    }
+    20.6% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    30% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    30.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    30.5% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    30.6% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    45% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    45.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    50% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    55% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.25);
+    }
+    55.1% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    57% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    57.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35);
+    }
+    60% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35);
+    }
+    60.1% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    65% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    65.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    75% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.35), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    75.1% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    77% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    77.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 110px rgba(255, 255, 255, 0.2), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    85% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.55), 0 0 60px rgba(255, 255, 255, 0.4), 0 0 110px rgba(255, 255, 255, 0.2), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    85.1% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    86% {
+      opacity: 0;
+      text-shadow: none;
+    }
+    86.1% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+    100% {
+      opacity: 1;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.45), 0 0 110px rgba(255, 255, 255, 0.25), 0 0 100px rgba(255, 255, 255, 0.1);
+    }
+  }
+
+
+
+
+
+                /* TRENDING GAMES FLICKER EFFECT END */
+  
+  
+
+.trending-number{
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    z-index: 15;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--secondary-background-color);
+    color: var(--light-color);
+    border-radius: 60%;
+}
+
+.trending-news-data .sub-heading{
+    /* Image details */
+    font-size: var(--font-size-sm);
+}
+
+.trending-news-box:hover .sub-heading{
+    color: var(--light-color-alt);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* swiper and mystery games */
+
+.section-title{
+
+    /* Mystery Games heading */
+    position: relative;
+    font-size: var(--font-size-md);
+    margin-bottom: 6rem;
+}
+
+.section-title::before{
+    content: attr(data-name);
+    /* data name is the text which will appear as a shadow */
+    font-size: var(--font-size-lg);
+    text-transform: uppercase;
+    opacity: .1;
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+}
+
+.article.swiper-slide{
+    height: 4rem;
+}
+
+.swiper-wrapper{
+    height: auto;
+
+}
+
+.swiper-controls{
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--secondary-background-color);
+}
+
+.swiper-controls::after{
+    font-size: 1.6rem;
+    /* This reduces the size of the swiper arrows */
+}
+
+.swiper-pagination{
+    bottom: .5rem !important;
+    /* !important overrides all previous stylings */
+}
+
+.swiper-pagination-bullet{
+    background-color: var(--light-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Older games */
+
+
+.older-games-grid-wrapper{
+    gap: var(--gap);
+}
+
+.older-games-article-image-wrapper,
+.older-games .article{
+    min-height: var(--item-min-height-md);
+    min-height: var(--item-min-height-lg);
+    /* Image size */
+}
+
+.older-games .article{
+    background-color: var(--secondary-background-color);
+}
+
+.older-games-article-image-wrapper{
+    position: relative;
+}
+
+.older-games-grid-wrapper .article-data-container{
+    position: static;
+    /* this made image details appear right below the image */
+    background-color: transparent;
+}
+
+.older-games-grid-wrapper .article-title{
+    margin-bottom: var(--margin-sm);
+}
+
+
+
+          /* IGI 1 Image card Hover Animation start */
+
+
+
+.older-games-grid-wrapper
+.scale-up-bottom:hover
+.article-image
+
+
+{
+  animation: scale-up-bottom 0.7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes scale-up-bottom {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+  }
+}
+
+
+
+
+
+
+          /* IGI 1 Image card Hover Animation end */
+
+
+
+
+
+
+
+          /* Max Payne 1 Image card Hover Animation start */
+
+.older-games-grid-wrapper
+.rotate-vert-center:hover
+.article-image
+ {
+	-webkit-animation: rotate-vert-center 0.9s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: rotate-vert-center 0.9s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes rotate-vert-center {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+
+
+
+
+      /* Max Payne 1 Image card Hover Animation end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /* NFS MW Image card Hover Animation start */
+
+
+      /* The order of the classes matter */
+      /* Therefore below 3 classes always needs to be in this order */
+
+.older-games-grid-wrapper
+.rotate-hor-center:hover
+.article-image{
+  animation: rotate-hor-center 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes rotate-hor-center {
+  0% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(-360deg);
+            transform: rotateX(-360deg);
+  }
+}
+
+    
+      /* NFS MW Image card Hover Animation end */
+
+
+
+
+
+
+
+
+
+
+        /* Far cry 1 Image card Hover Animation start */
+
+
+.older-games-grid-wrapper
+.flip-in-hor-top:hover
+.article-image{
+  animation: flip-in-hor-top 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes flip-in-hor-top {
+  0% {
+    -webkit-transform: rotateX(-80deg);
+            transform: rotateX(-80deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+
+
+        /* Far cry 1 Image card Hover Animation end */
+
+
+
+
+
+        /* cod hover */
+
+
+
+
+.older-games-grid-wrapper
+.rotate-scale-down-diag-2:hover
+.article-image {
+  animation: rotate-scale-down-diag-2 1.1s linear both;
+}
+
+
+@keyframes rotate-scale-down-diag-2 {
+  0% {
+
+            transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+  }
+  50% {
+
+            transform: scale(0.5) rotate3d(-1, 1, 0, 180deg);
+  }
+  100% {
+
+            transform: scale(1) rotate3d(-1, 1, 0, 360deg);
+  }
+}
+
+
+.see-more-container{
+    margin-top: var(--margin-md);
+}
+
+.see-more-btn{
+    text-transform: uppercase;
+}
+
+.see-more-btn:hover i{
+    animation: see-more-btn 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+
+.see-more-btn i {
+    transition: transform .25s;
+}
+
+.see-more-btn:hover i{
+    transform: translateX(.5rem);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        /* POPULAR GAMES START */
+
+                                    
+.popular-games-container{
+    gap: var(--gap);
+}
+
+.popular-games-container .article{
+    min-height: var(--item-min-height-sm);
+    overflow: hidden;
+}
+
+.swirl-in-fwd{
+    overflow: hidden;
+}
+
+.game-genre{
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* x and y each 50% centers it (above line) */
+    /* background-color: var(--transparent-dark-color); */
+    background-color: rgba(0, 242, 16, 0.69);
+    padding: 1rem 2rem;
+}
+
+.popular-games-container .article:hover .game-genre{
+    color: var(--light-color);
+}
+
+/* .popular-games-container .article:hover .article-image{
+
+} */
+
+
+
+
+
+            /* IMAGE CARD HOVER EFFECT ANIMATION START */
+
+
+.popular-games-container
+.swirl-in-fwd:hover
+.article-image
+ 
+{
+	animation: swirl-in-fwd 0.9s ease-out both;
+}  
+
+
+  @keyframes swirl-in-fwd {
+    0% {
+      -webkit-transform: rotate(-540deg) scale(0);
+              transform: rotate(-540deg) scale(0);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotate(0) scale(1);
+              transform: rotate(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+
+
+/* nfs heat */
+
+
+.popular-games-container
+.rotate-scale-down-hor:hover
+.article-image
+{
+  animation: rotate-scale-down-hor 0.9s linear both;
+}
+
+
+@keyframes rotate-scale-down-hor {
+  0% {
+            transform: scale(1) rotateX(0);
+  }
+  50% {
+            transform: scale(0.5) rotateX(-180deg);
+  }
+  100% {
+            transform: scale(1) rotateX(-360deg);
+  }
+}
+
+
+
+/* S.T.A.L.K.E.R 2 */
+
+.popular-games-container
+.puff-in-center:hover
+.article-image
+{
+	        animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
+
+
+@keyframes puff-in-center {
+  0% {
+            transform: scale(2);
+
+            filter: blur(4px);
+    opacity: 0;
+  }
+  100% {
+
+            transform: scale(1);
+            filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+
+  
+
+
+            /* IMAGE CARD HOVER EFFECT ANIMATION END */
+
+
+
+
+                                        /* POPULAR GAMES END */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* NEWSLETTER START */
+
+.newsletter{
+  /* whole newsletter container gets a 6rem gap from botton */
+  padding-bottom: 6rem;
+}
+
+.newsletter-title{
+  /* Subscribe to Gamersky */
+  background-color: #74d16b;
+  font-size: var(--font-size-lg);
+}
+
+.newsletter-description{
+  /* lorem ipsum..... */
+  margin-bottom: 3rem;
+}
+
+
+/* NEWSLETTER END */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Blog post start */
+
+.blog-post{
+  /* The whole page */
+  padding-bottom: 5rem;
+}
+
+.blog-post-data{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: 2.5rem;
+}
+
+.blog-post-title{
+  font-size: clamp(3rem, 5vw, 6rem);
+  /* font size: clamp() is for responsive typography */
+    /* clamp(3rem, 5vw, 6rem) */
+    
+    /* the 3 rem in this is minimum font size. 
+    It will not get more smaller than 3rem */
+
+    /* the 5vw is it's width */
+
+    /* the 6 rem is the maximum font size */
+
+    /* As per the viewport and different screens as it gets bigger
+    the font size keeps getting bigger all the way upto 6 rem
+    Once the font size reaches 6 rem it stops and doesnt increase further  */
+}
+
+
+.blog-post-data
+.article-data{
+  /* gameplay time */
+  margin-bottom: 2.5rem;
+}
+
+.blog-post-data img{
+
+  /* For the image */
+
+  width: 100%;
+  height: var(--item-min-height-sm);
+  object-fit: cover;
+  object-position: center 10%;
+}
+
+.blog-post-container .container{
+  /* Entire paragraph */
+
+  max-width: 90rem;
+  /* The paragraph only increases in size upto a width of 90rem.*/
+  padding: 0;
+  /* no padding between paragraph container */
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  /* Each 3 paragraph's and blockquote get's a gap*/
+
+}
+
+.quote{
+  background-color: var(--secondary-background-color);
+  padding: 2.3rem;
+}
+
+.quote p{
+  font-style: italic;
+}
+
+.quote span i{
+  font-size: 3.5rem;
+}
+
+.author{
+    margin-top: 5rem;
+    gap: var(--gap);
+    background-color: var(--secondary-background-color);
+}
+
+.author-image-box{
+    position: relative;
+    height: var(--item-min-height-sm);
+}
+
+.author-about{
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.author-name{
+    color: var(--light-color);
+    font-weight: 400;
+}
+
+.author p{
+    max-width: 50rem;
+    margin-bottom: 1rem;
+}
+
+.author-about .social-media{
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.ri-instagram-line{
+  color: #F56040;
+}
+
+.ri-instagram-line:hover {
+
+    color: #F56040;
+    box-shadow: 0 0 24px 0 #F56040;
+}
+
+.ri-facebook-circle-line{
+  color: #3b5998;
+}
+
+.ri-facebook-circle-line:hover{
+  color: #3b5998;
+  box-shadow: 0 0 24px 0 #3b5998;
+}
+
+.ri-twitter-line{
+  color: aqua;
+}
+
+.ri-twitter-line:hover{
+  color: aqua;
+  box-shadow: 0 0 24px 0 aqua;
+}
+
+.ri-pinterest-line{
+  color: #ff002b;
+
+}
+
+.ri-pinterest-line:hover{
+  color: #ff002b;
+  box-shadow: 0 0 24px 0 #ff002b;
+}
+
+
+/* Blog post end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Navigator start */
+
+
+.navigation_container{
+
+  text-align: center;
+  color: #FFFFFF;
+
+text-shadow: #FFF 0px 0px 5px, 
+#FFF 0px 0px 10px, 
+#FFF 0px 0px 15px, 
+#FF2D95 0px 0px 20px, 
+#FF2D95 0px 0px 30px, 
+#FF2D95 0px 0px 40px, 
+#FF2D95 0px 0px 50px, 
+#FF2D95 0px 0px 75px;
+color: #FFFFFF;
+
+}
+
+
+
+
+.slide-right {
+  transition: transform 300ms ease-out;
+}
+
+.slide-right:hover {
+  transform: rotate(21deg) translate(0px, 0px);
+}
+
+
+.navigation_container{
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+
+}
+
+
+
+/* Navigator end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer start */
+
+.footer{
+  background-color: var(--secondary-background-color);
+}
+
+.footer-container{
+  gap: var(--gap);
+}
+
+.company-data
+{
+  display: flex;
+  flex-direction: column;
+  order: 1;
+}
+
+.company-description{
+  margin-block: var(--margin-sm);
+}
+
+.social-media{
+  margin-bottom: var(--margin-md);
+}
+
+.copyright-notice{
+  opacity: .8;
+}
+
+
+.footer-list{
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-title{
+  font-size: var(--font-size-md);
+  text-transform: uppercase;
+  margin-bottom: var(--margin-sm);
+}
+
+
+/* Footer end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Scroll bar start */
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #11ff00 #fff08f;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #fff08f;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #11ff00;
+    border-radius: 15px;
+    border: 3px ridge #ffffff;
+  }
+
+
+/* Scroll bar end */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media Queries */
+
+
+
+
+
+
+
+  /* For screen size 600px and above */
+
+
+
+@media screen and (min-width: 600px){
+
+
+  /* TRENDING GAMES START */
+
+
+
+  .trending-news-box{
+    /* Trending image card details entire container
+    (Game heading [Elden ring ....]) and
+    (Gameplay time)
+    */
+
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+
+
+  .trending-news-image-box{
+    /* The images of trending games */
+    width: 50%;
+  }
+
+
+  .trending-news-data{
+    /* Trending games image card details only */
+    margin: auto; /* to center */
+    text-align: center;
+  }
+
+
+
+/* TRENDING GAMES END */
+
+
+
+
+
+
+
+
+
+
+
+
+/* NEWSLETTER START= */
+
+.newsletter-description{
+  max-width: 40rem;
+}
+
+/* NEWSLETTER END= */
+
+
+
+
+
+
+
+
+
+
+
+
+/* POPULAR TAGS START= */
+
+.popular-games-container,
+.footer-container{
+
+  grid-template-columns: repeat(2, 1fr);
+
+
+}
+
+/* POPULAR TAGS END= */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FORM START */
+
+.form-container-inner{
+  align-items: center;
+}
+
+/* FORM END */
+
+
+
+
+
+
+
+
+
+
+
+/* COMPANY DATA START */
+
+.company-data{
+  /* Heading and We recommend you pc games.... */
+  /* Heading comes on top */
+  order: 0;
+}
+
+/* COMPANY DATA END */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* AUTHOR START */
+
+.author{
+  /* Image card of myself */
+  grid-template-columns: 25rem 2fr;
+  /* 25 rem is gap from below
+  (within the content) */
+}
+
+/* AUTHOR END */
+
+}
+
+
+
+
+/* For screen size 600px and above */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* for screen size 768 px and above */
+/* FOR TABLETS */
+
+@media screen and (min-width: 768px) {
+
+
+  /* FEATURED ARTICLES START */
+
+
+  .featured-content{
+    /* Sniper Elite, blur entire image card container */
+    grid-template-columns: 
+    repeat(4, 1fr); 
+    /* 4 columns and 2 rows */
+
+    grid-template-rows: 
+    5rem
+    repeat(4, 1fr);
+    /* second row gets affected by rem size */
+  }
+
+  .headline-banner{
+    grid-column: 1/5;
+    /* 1 is the starting from grid */
+    /* -1 is the end of the grid */
+    /* 1/4 means 1-4 */
+    font-size: var(--font-size-sm);
+  }
+
+
+  .featured-article{
+    grid-column: 3/5;
+    /* take position from 3rd column 
+    to 5th column */
+    grid-row: 2/4;
+
+    /* take up position in
+    2nd row upto 4th row */
+  }
+
+  .featured-article-1{
+    grid-column: 1/3;
+    /* from the second column
+    take up position from 1 to 3 */
+  }
+
+  .featured-article-3{
+    grid-column: 1/5;
+    /* Take up horizontal position 
+    from 1 to 5 */
+    grid-row: 4/6;
+
+    /* take row position from 4
+    to end of horizontal grid */
+  }
+
+
+
+
+  /* FEATURED ARTICLES END */
+
+
+
+
+
+
+
+
+  /* OLDER GAMES START */
+
+
+  .older-games .article{
+    /* entire image card
+    container (older games) */
+
+    grid-template-columns:
+    25rem 1fr;
+    /* fr increases space
+    for integer values
+    
+    and decreases space for
+    values in between 0 */
+
+  }
+
+
+  .older-games-article-image-wrapper{
+    /* image only */
+    height: auto;
+  }
+
+
+
+
+    /* OLDER GAMES END */
+
+
+
+
+
+
+
+
+    /* BLOG POST START */
+
+    .blog-post-data img{
+      height: var(--item-min-height-md);
+    }
+
+    /* BLOG POST END */
+
+  
+}
+
+
+/* for screen size 768 px and above */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* for screen size 1024 px and above */
+
+@media screen and (min-width: 1024px) {
+  
+  .menu{
+    position: initial;
+    width: initial;
+    padding: initial;
+    background-color: transparent;
+    opacity: initial;
+    transform: initial;
+    
+  }
+
+
+
+  .menu > .list{
+    flex-direction: row;
+  }
+
+  .screen-lg-hidden{
+    display: none;
+  }
+
+  .screen-sm-hidden{
+    display: block;
+  }
+
+  .sign-up-btn{
+    /* second sign in button */
+    color: #11ff00;
+    padding: .4rem;
+  }
+
+  .btn.fancy-border:hover::before{
+    animation: animate_border
+    .75s linear infinite;
+  }
+
+  @keyframes animate_border {
+    to{
+      transform: translateX(-50%);
+    }
+  }
+
+  .featured-articles-container{
+    grid-template-columns: 1fr 35rem;
+  }
+
+  .trending-news-image-box{
+    width: 25rem;
+    height: 20rem;
+  }
+
+  .popular-games-container{
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+  }
+
+  .footer-container{
+    grid-template-columns: 
+    repeat(5, 1fr);
+
+    /* there is an empty space */
+        /* it fills upto 4 spaces */
+        /* the 5th space is empty */
+        /* to avoid that use below code */
+
+  }
+
+  .company-data{
+    grid-column: 
+    span 2;
+  }
+
+  .company-description{
+    max-width: 85%;
+  }
+
+  .copyright-notice{
+    margin-top: auto;
+  }
+
+  .navigation_container{
+    font-size: var(--font-size-md);
+  }
+
+  .blog-post-data img{
+    height: 80rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* for screen size 1200 px and above */
+
+
+
+
+
+
+
+
+  @media screen and (min-width:1200px){
+
+    .older-games-grid-wrapper{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    }
+
+  }
+
+
+
+    /* for screen size 1200 px and above */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /* for screen size 1500 px and above */
+
+
+
+      @media screen and (min-width:1500px){
+
+
+        .featured-article{
+          grid-column: 3/-1;
+        }
+
+        .featured-article-1{
+          grid-column: 1/3;
+          grid-row: 2/-1;
+        }
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
